@@ -33,14 +33,29 @@ class Tourvisor extends Object
         if (is_string($types)) $types = [$types];
         $params['type'] = implode(',', $types);
         $params['format'] = $format;
-        $params['authlogin'] = $this->login;
-        $params['authpass'] = $this->password;
 
         return $this->makeRequet(self::API_LIST_URL, $params);
     }
 
+    public function getResult($id, $type, $params, $format = 'json')
+    {
+        $params['requestid'] = $id;
+        $params['type'] = $type;
+        $params['format'] = $format;
+
+        return $this->makeRequet(self::API_RESULT_URL, $params);
+    }
+
+    public function search($params)
+    {
+        return $this->makeRequet(self::API_SEARCH_URL, $params);
+    }
+
     protected function makeRequet($url, $params = [])
     {
+        $params['authlogin'] = $this->login;
+        $params['authpass'] = $this->password;
+
         $curlOptions = [
             CURLOPT_URL => $this->composeUrl($url, $params),
             CURLOPT_RETURNTRANSFER => true,

@@ -37,4 +37,14 @@ class ApiController extends Controller
     {
         return $this->TV->getList($type, Yii::$app->request->queryParams);
     }
+
+    public function actionResult($requestid, $type = 'result')
+    {
+        return $this->TV->getResult($requestid, $type, Yii::$app->request->queryParams);
+    }
+
+    public function actionSearch()
+    {
+        return $this->TV->search(Yii::$app->request->queryParams);
+    }
 } 
