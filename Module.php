@@ -27,7 +27,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         $app->getUrlManager()->addRules([
             $this->id => $this->id . '/api/index',
-            $this->id . '/list/<type:(departure|country|region|meal|stars|hotel|operator|flydate)>' => $this->id . '/api/list',
+            $this->id . '/<type:(departure|country|region|meal|stars|hotel|operator|flydate)>' => $this->id . '/api/list',
         ], false);
     }
 
