@@ -30,7 +30,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
                 'class' => 'yii\rest\UrlRule',
                 'controller' => 'tourvisor/api',
                 'tokens' => [
-                    '{type}' => '<type:departure|country|region|meal|stars|hotel|operator|flydate>',
+                    '{type}' => '<type:(departure|country|region|meal|stars|hotel|operator|flydate)>',
                 ],
                 'patterns' => [
                     'GET,HEAD {type}' => 'list',

@@ -33,8 +33,8 @@ class ApiController extends Controller
         return ['version' => $this->module->version];
     }
 
-    public function actionList()
+    public function actionList($type)
     {
-        return $this->TV->getList('departure');
+        return $this->TV->getList($type);
     }
 } 
