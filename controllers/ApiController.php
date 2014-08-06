@@ -6,12 +6,30 @@
 
 namespace treschelet\tourvisor\controllers;
 
+use Yii;
 use yii\rest\Controller;
+use treschelet\tourvisor\components\Tourvisor;
 
 class ApiController extends Controller
 {
+    /** @var $TV Tourvisor */
+    protected $TV;
+
+    public function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            $this->TV = new Tourvisor([
+                'login' => $this->module->login,
+                'password' => $this->module->password,
+            ]);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function actionList()
     {
-        return ['response' => 'ok'];
+        return $this->TV->getList('departure');
     }
 } 
