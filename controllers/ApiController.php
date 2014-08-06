@@ -35,6 +35,6 @@ class ApiController extends Controller
 
     public function actionList($type)
     {
-        return $this->TV->getList($type);
+        return $this->TV->getList($type, Yii::$app->request->queryParams);
     }
 } 
