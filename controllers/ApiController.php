@@ -28,6 +28,11 @@ class ApiController extends Controller
         }
     }
 
+    public function actionIndex()
+    {
+        return ['version' => $this->module->version];
+    }
+
     public function actionList()
     {
         return $this->TV->getList('departure');
